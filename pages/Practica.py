@@ -142,11 +142,12 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
         # ANÁLISIS ESTADÍSTICO MULTIVARIADO
         Se presentan algunas rutinas básicas para el Análisis de Componentes Principales y de Agrupamiento (Cluster) utilizando resultados de análisis fisicoquímicos de agua subterránea (CAMPUS UNAL 2023). Las concentraciones se reportan en meq/L.
         Para la preparación de la base de datos, se generan algunos estadísticos y gráficos descriptivos, evaluación de la normalidad de los parámetros y estandarización de los datos.
-        # Analisis de componentes principales
         Datos cargados:
         """)
-        # medf = pd.read_csv('Insumos/PlantillaFQO.csv')
         st.write(df)
+        st.markdown("""# Analisis de componentes principales
+        """)
+        # medf = pd.read_csv('Insumos/PlantillaFQO.csv')
     
         medf1 = df[['Sample','pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
     
