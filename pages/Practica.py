@@ -81,13 +81,13 @@ st.markdown(f"**Página {st.session_state.page} de {total_pages}**")
 
 # Lógica de cada página
 if df is not None:  # Solo ejecutar si hay datos cargados correctamente
-    if st.session_state.page == 1:
+    if st.session_state.page == 2:
         st.markdown("""## Introducción a los diagramas hidrogeoquímicos.
         Datos cargados:
         """)
         st.write(df)
 
-    elif st.session_state.page == 2:
+    elif st.session_state.page == 3:
         st.markdown("## Diagrama de Gibbs")
         st.markdown("Descripción del diagrama de Gibbs...")
 
@@ -96,7 +96,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             gibbs.plot(df, unit='mg/L', figname='images/Gibbs_diagram', figformat='jpg')
             st.image("images/Gibbs_diagram.jpg", caption="Diagrama de Gibbs", use_container_width=True)
 
-    elif st.session_state.page == 3:
+    elif st.session_state.page == 4:
         st.markdown("## Diagrama de Piper")
         st.markdown("Descripción del diagrama de Piper...")
 
@@ -112,7 +112,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             contour_piper.plot(df, unit='mg/L', figname='images/Contour_Piper', figformat='jpg')
             st.image("images/Contour_Piper.jpg", caption="Diagrama de contornos de Piper", use_container_width=True)
 
-    elif st.session_state.page == 4:
+    elif st.session_state.page == 5:
         st.markdown("## Diagrama de Durov")
 
         if st.button("Generar diagrama de Durov"):
@@ -120,7 +120,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             durvo.plot(df, unit='mg/L', figname='images/Durov_diagram', figformat='jpg')
             st.image("images/Durov_diagram.jpg", caption="Diagrama de Durov", use_container_width=True)
 
-    elif st.session_state.page == 5:
+    elif st.session_state.page == 6:
         st.markdown("## Diagrama de Gaillardet")
 
         if st.button("Generar diagrama de Gaillardet"):
@@ -128,7 +128,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             gaillardet.plot(df, unit='mg/L', figname='images/Gaillardet_diagram', figformat='jpg')
             st.image("images/Gaillardet_diagram.jpg", caption="Diagrama de Gaillardet", use_container_width=True)
 
-    elif st.session_state.page == 6:
+    elif st.session_state.page == 7:
         st.markdown("## Diagrama de Schoeller")
 
         if st.button("Generar diagrama de Schoeller"):
@@ -136,7 +136,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             schoeller.plot(df, unit='mg/L', figname='images/Schoeller_diagram', figformat='jpg')
             st.image("images/Schoeller_diagram.jpg", caption="Diagrama de Schoeller", use_container_width=True)
 
-    elif st.session_state.page == 7:
+    elif st.session_state.page == 1:
         st.markdown("""
         # ANÁLISIS ESTADÍSTICO MULTIVARIADO
         Se presentan algunas rutinas básicas para el Análisis de Componentes Principales y de Agrupamiento (Cluster) utilizando resultados de análisis fisicoquímicos de agua subterránea (CAMPUS UNAL 2023). Las concentraciones se reportan en meq/L.
@@ -252,7 +252,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
         # Mostrar el dendrograma en Streamlit
         st.pyplot(plot_dendrogram())
 
-    elif st.session_state.page == 8:
+    elif st.session_state.page == 7:
         st.markdown("## Diagrama HFE-D")
 
         if st.button("Generar diagrama HFE-D"):
