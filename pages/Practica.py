@@ -262,6 +262,18 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             hfed.plot(df, unit='mg/L', figname='images/HFE-D_diagram', figformat='jpg')
             st.image("images/HFE-D_diagram.jpg", caption="Diagrama HFE-D", use_container_width=True)
 
+    elif st.session_state.page == 8:
+#----------------------------------------------------------------------------------------------
+            st.markdown("""
+                # Diagrama de Stiff
+            """ )
+            # df = pd.read_csv('Insumos/PlantillaFQO.csv')
+            stiff.plot(df, unit='mg/L', figname='images/Stiff diagram', figformat='jpg')
+            files = [x for x in os.listdir("images") if x.startswith("Stiff")]
+            imageselection = st.selectbox("Imagen ejemplo a visualizar:",
+                            files)
+            st.image(f"images/{imageselection}", caption="Diagrama de Stiff", use_container_width=True)
+
 # Navegación entre páginas
 col1, col2, col3 = st.columns([1, 2, 1])
 with col1:
