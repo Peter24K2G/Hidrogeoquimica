@@ -189,10 +189,6 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             return summary
         summary = pca_summary(pca, standardisedX)
         st.markdown("""
-        ### Varianza acumulada
-        Se puede tambien verificar el porcentaje acumulado de la varianza explicada por los componentes. Es importante observar que con sólo 2 componentes se alcanza un 64% y con el tercer componente hasta el 80%.
-        """)
-        st.markdown("""
         ## Selección de número de componentes principales a retener
         ### Scree plot
         Se pueden retener los componentes de acuerdo con el cambio de pendiente más fuerte en el Scree plot (hasta el componente 4). 
@@ -214,8 +210,13 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             return fig  # Devuelve la figura correctamente
     
         # Mostrar en Streamlit
+        st.write(summary)
         st.pyplot(screeplot(pca, standardisedX))
     
+        st.markdown("""
+        ### Varianza acumulada
+        Se puede tambien verificar el porcentaje acumulado de la varianza explicada por los componentes. Es importante observar que con sólo 2 componentes se alcanza un 64% y con el tercer componente hasta el 80%.
+        """)
     
         #Asignar índices a la base de datos.
         label = iris1.columns
@@ -228,13 +229,12 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
         st.write("# Peso de los componentes principales")
         st.write("Pesos:", results['loadings'])
         st.pyplot(fig)
-        st.write(summary)
     
         st.markdown("""
         ### Citerio de Kaisser
         Se pueden retener los componentes cuya varianza este por encima de 1. Para el ejemplo se conservarían los tres primeros componentes.
         """)
-        st.write(summary.sdev**2)
+        # st.write(summary.sdev**2)
         st.divider()
     
         st.write("# HHCA (Hierarchical Cluster Analysis)")
