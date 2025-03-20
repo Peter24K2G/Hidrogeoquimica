@@ -165,7 +165,10 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
 
         st.divider()
 
-        st.markdown("# Analisis de componentes principales")    
+        st.markdown("""# Analisis de componentes principales
+        Datos cargados:
+        """)
+        st.write(df)
         medf1 = df[['Sample','pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
         medf2 = medf1.dropna()
         iris1 = medf2[['pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
