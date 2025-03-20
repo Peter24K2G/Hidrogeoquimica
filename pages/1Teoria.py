@@ -463,19 +463,19 @@ elif st.session_state.page == 9:
 
     """)
     # Cargar las imágenes usando st.image()
-    st.image("Fig_Aux\Pipper_expl.JPG", caption="Diagrama de Piper", use_container_width=True)
+    st.image("Fig_Aux\Pipper_expl.jpg", caption="Diagrama de Piper", use_container_width=True)
     st.markdown("""
         y los tipos o facies del agua sobre el diagrama:
     """)
-    st.image("Fig_Aux\Pipper_expl_2.JPG", caption="Tipos de Facies de Agua", use_container_width=True)
+    st.image("Fig_Aux\Pipper_expl_2.jpg", caption="Tipos de Facies de Agua", use_container_width=True)
     st.markdown("""
         o resumidos en una tabla:
     """)
-    st.image("Fig_Aux\Facies.JPG", caption="Facies en el Diagrama de Piper", use_container_width=True)
+    st.image("Fig_Aux\Facies.jpg", caption="Facies en el Diagrama de Piper", use_container_width=True)
     st.markdown("""
         Recientemente, algunos autores han propuesto la inclusión de técnicas estadísticas para su construcción y mejora, buscando visualizar información adicional como las relaciones $Ca^{2+}$/$Mg^{2+}$ vs $Cl^{-}$/$SO_4^{2}$, útil para identificar condiciones de intercambio catiónico.
     """)
-    st.image("Fig_Aux\ILR_Piper.JPG", caption="ILR-Piper", use_container_width=True)
+    st.image("Fig_Aux\ILR_Piper.jpg", caption="ILR-Piper", use_container_width=True)
     st.markdown("""
         Tomado de: Shelton et al., 2018.
     """)
