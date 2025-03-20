@@ -540,7 +540,7 @@ elif st.session_state.page == 13:
     files = [x for x in os.listdir("imagesTeoricas") if x.startswith("Stiff")]
     imageselection = st.selectbox("Imagen ejemplo a visualizar:",
                     files)
-    st.image(f"imagesTeoricas\{imageselection}", caption="Diagrama de HFE-D", use_container_width=True)
+    st.image(f"imagesTeoricas/{imageselection}", caption="Diagrama de HFE-D", use_container_width=True)
     #----------------------------------------------------------------------------------------------
 elif st.session_state.page == 14:
 #----------------------------------------------------------------------------------------------
