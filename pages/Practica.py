@@ -192,7 +192,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
     
         #Asignar índices a la base de datos.
         label = iris1.columns
-        standardisedX.set_index(medf['Sample'], inplace=True) 
+        # standardisedX.set_index(medf['Sample'], inplace=True) 
         # model = pcaf(n_components=0.95)
         model = pcaf(n_components=6) #Solo conserva 3 componentes
         results = model.fit_transform(standardisedX)
