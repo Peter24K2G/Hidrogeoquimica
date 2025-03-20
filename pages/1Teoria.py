@@ -360,6 +360,7 @@ if st.session_state.page == 5:
     # model = pcaf(n_components=0.95)
     model = pcaf(n_components=6) #Solo conserva 3 componentes
     results = model.fit_transform(standardisedX)
+    st.write("Pesos:", results['loadings'])
     fig, ax = model.biplot(n_feat=9, PC=[0,1])
 
     st.write("# Peso de los componentes principales")
