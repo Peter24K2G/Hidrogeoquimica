@@ -70,7 +70,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
         st.markdown("""## Introducción a los diagramas hidrogeoquímicos.
         Datos cargados:
         """)
-        st.wrte(df)
+        st.write(df)
 
     elif st.session_state.page == 2:
         st.markdown("## Diagrama de Gibbs")
