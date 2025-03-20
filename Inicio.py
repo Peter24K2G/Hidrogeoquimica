@@ -22,7 +22,7 @@ from wqchartpy import schoeller
 
 
 # Mostrar el logo en la barra lateral
-logo = Image.open("images\MEGIAicon.png")  # Asegúrate de colocar la ruta correcta de tu logo
+logo = Image.open("images/SIAMSicon.png")  # Asegúrate de colocar la ruta correcta de tu logo
 st.sidebar.image(logo, use_container_width=True)
 
 # Barra lateral con título e información
