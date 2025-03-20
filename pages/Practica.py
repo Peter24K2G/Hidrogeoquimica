@@ -133,7 +133,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
     elif st.session_state.page == 7:
         st.markdown("## Relaciones químicas en el agua")
         st.markdown("Análisis de relaciones químicas con gráficos de dispersión interactivos.")
-
+        df["Ca+Mg"] = df["Ca"]+df["Mg"]
         fig = px.scatter(df, x="HCO3", y="Ca+Mg", color="Cluster",
                          title="Relación Ca + Mg vs HCO3",
                          labels={"HCO3": "HCO3 (meq/L)", "Ca+Mg": "Ca + Mg (meq/L)"})
