@@ -137,6 +137,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             st.image("images/Schoeller_diagram.jpg", caption="Diagrama de Schoeller", use_container_width=True)
 
     elif st.session_state.page == 7:
+        st.markdown("# Analisis de componentes principales")    
         medf1 = df[['Sample','pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
         medf2 = medf1.dropna()
         iris1 = medf2[['pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
