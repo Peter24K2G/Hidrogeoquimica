@@ -269,13 +269,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             st.markdown("""
                 # Diagrama de Stiff
             """ )
-            # df = pd.read_csv('Insumos/PlantillaFQO.csv')
-            Sample = st.selectbox("Selecciona la muestra a anlizar:", df["Sample"].unique())
-            ndf = df.loc[df["Sample"] == Sample]
-            # if "Label" not in ndf.columns:
-            ndf["Label"] = ""
-            st.write(ndf)
-            stiff.plot(ndf, unit='mg/L', figname='images/Stiff diagram', figformat='jpg')
+            stiff.plot(df, unit='mg/L', figname='images/Stiff diagram', figformat='jpg')
             files = [x for x in os.listdir("images") if x.startswith("Stiff")]
             imageselection = st.selectbox("Imagen ejemplo a visualizar:",
                             files)
