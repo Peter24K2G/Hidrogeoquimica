@@ -131,13 +131,90 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             st.image("images/Schoeller_diagram.jpg", caption="Diagrama de Schoeller", use_container_width=True)
 
     elif st.session_state.page == 7:
-        st.markdown("## Relaciones químicas en el agua")
-        st.markdown("Análisis de relaciones químicas con gráficos de dispersión interactivos.")
-        df["Ca+Mg"] = df["Ca"]+df["Mg"]
-        fig = px.scatter(df, x="HCO3", y="Ca+Mg", color="Cluster",
-                         title="Relación Ca + Mg vs HCO3",
-                         labels={"HCO3": "HCO3 (meq/L)", "Ca+Mg": "Ca + Mg (meq/L)"})
-        st.plotly_chart(fig)
+    medf1 = df[['Sample','pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
+    medf2 = medf1.dropna()
+    iris1 = medf2[['pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
+    standardisedX = scale(iris1)
+    standardisedX = pd.DataFrame(standardisedX, index=iris1.index, columns=iris1.columns)
+
+    standardisedX.apply(np.mean)
+    standardisedX.apply(np.std)
+    pca = PCA().fit(standardisedX)
+
+    def pca_summary(pca, standardised_data, out=True):
+        names = ["PC"+str(i) for i in range(1, len(pca.explained_variance_ratio_)+1)]
+        a = list(np.std(pca.transform(standardised_data), axis=0))
+        b = list(pca.explained_variance_ratio_)
+        c = [np.sum(pca.explained_variance_ratio_[:i]) for i in range(1, len(pca.explained_variance_ratio_)+1)]
+        columns = pd.MultiIndex.from_tuples([("sdev", "Standard deviation"), ("varprop", "Proportion of Variance"), ("cumprop", "Cumulative Proportion")])
+        summary = pd.DataFrame(zip(a, b, c), index=names, columns=columns)
+        return summary
+    summary = pca_summary(pca, standardisedX)
+    st.write(summary)
+    st.markdown("""
+    ### Varianza acumulada
+    Se puede tambien verificar el porcentaje acumulado de la varianza explicada por los componentes. Es importante observar que con sólo 2 componentes se alcanza un 64% y con el tercer componente hasta el 80%.
+    """)
+    st.markdown("""
+    ## Selección de número de componentes principales a retener
+    ### Scree plot
+    Se pueden retener los componentes de acuerdo con el cambio de pendiente más fuerte en el Scree plot (hasta el componente 4). 
+    """)
+
+    # Función corregida
+    def screeplot(pca, standardised_values):
+        y = np.std(pca.transform(standardised_values), axis=0)**2
+        x = np.arange(len(y)) + 1
+
+        fig, ax = plt.subplots(figsize=(8,5))
+        ax.plot(x, y, "o-", markersize=8)
+        ax.set_xticks(x)
+        ax.set_xticklabels(["Comp."+str(i) for i in x], rotation=60)
+        ax.set_ylabel("Varianza Explicada")
+        ax.set_xlabel("Componentes Principales")
+        ax.set_title("Scree Plot (Varianza Explicada por Componente)")
+        
+        return fig  # Devuelve la figura correctamente
+
+    # Mostrar en Streamlit
+    st.pyplot(screeplot(pca, standardisedX))
+
+    st.markdown("""
+    ### Citerio de Kaisser
+    Se pueden retener los componentes cuya varianza este por encima de 1. Para el ejemplo se conservarían los tres primeros componentes.
+    """)
+    st.write(summary.sdev**2)
+
+    #Asignar índices a la base de datos.
+    label = iris1.columns
+    standardisedX.set_index(medf['Sample'], inplace=True) 
+    # model = pcaf(n_components=0.95)
+    model = pcaf(n_components=6) #Solo conserva 3 componentes
+    results = model.fit_transform(standardisedX)
+    fig, ax = model.biplot(n_feat=9, PC=[0,1])
+
+    st.write("# Peso de los componentes principales")
+    st.pyplot(fig)
+
+    st.divider()
+
+    st.write("# HHCA (Hierarchical Cluster Analysis)")
+    # Enlace jerárquico
+    enlace = linkage(standardisedX, 'ward')
+
+    # Dendrograma
+    dendrograma = dendrogram(enlace)
+
+    def plot_dendrogram():
+        fig, ax = plt.subplots(figsize=(8, 5))
+        dendrogram(enlace, ax=ax)
+        ax.set_title("Dendrograma Jerárquico")
+        ax.set_ylabel("Distancia")
+        ax.set_xlabel("Muestras")
+        return fig  # Retornar la figura
+
+    # Mostrar el dendrograma en Streamlit
+    st.pyplot(plot_dendrogram())
 
     elif st.session_state.page == 8:
         st.markdown("## Diagrama HFE-D")
