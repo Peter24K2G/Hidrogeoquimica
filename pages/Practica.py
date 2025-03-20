@@ -15,6 +15,7 @@ import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import scale
 from pca import pca as pcaf
+from scipy.cluster.hierarchy import dendrogram, linkage
 
 from wqchartpy import gibbs, triangle_piper, contour_piper, durvo, gaillardet, schoeller, hfed
 
