@@ -235,7 +235,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
         ### Citerio de Kaisser
         Se pueden retener los componentes cuya varianza este por encima de 1. Para el ejemplo se conservarían los tres primeros componentes.
         """)
-        # st.write(summary.sdev**2)
+        st.write(summary.sdev**2)
         st.divider()
     
         st.write("# HHCA (Hierarchical Cluster Analysis)")
