@@ -35,10 +35,17 @@ if data_option == "Ejemplo predeterminado":
         df = None
 else:
     st.write("*Descarga el archivo plantilla*")
-    st.download_button( label="Descargar CSV", data=edf, file_name="Insumos/PlantillaFQO.csv", mime="text/csv")
+
+    # Cargar el archivo CSV como bytes para la descarga
+    try:
+        with open("Insumos/PlantillaFQO.csv", "rb") as file:
+            edf = file.read()
+        st.download_button(label="Descargar CSV", data=edf, file_name="PlantillaFQO.csv", mime="text/csv")
+    except Exception as e:
+        st.error(f"No se pudo cargar la plantilla: {e}")
+
     # Permitir al usuario subir su propio archivo CSV
     uploaded_file = st.sidebar.file_uploader("Sube tu archivo CSV", type=["csv"])
-    
     if uploaded_file is not None:
         try:
             df = pd.read_csv(uploaded_file)
