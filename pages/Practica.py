@@ -270,7 +270,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
                 # Diagrama de Stiff
             """ )
             # df = pd.read_csv('Insumos/PlantillaFQO.csv')
-            Sample = st.selection("Selecciona la muestra a anlizar:", df["Sample"].unique())
+            Sample = st.selectbox("Selecciona la muestra a anlizar:", df["Sample"].unique())
             ndf = df.loc[df["Sample" == Sample]]
             stiff.plot(ndf, unit='mg/L', figname='images/Stiff diagram', figformat='jpg')
             files = [x for x in os.listdir("images") if x.startswith("Stiff")]
