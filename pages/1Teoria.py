@@ -471,7 +471,7 @@ elif st.session_state.page == 9:
     st.markdown("""
         o resumidos en una tabla:
     """)
-    st.image("Fig_Aux/Facies.jpg", caption="Facies en el Diagrama de Piper", use_container_width=True)
+    st.image("Fig_Aux/Facies.JPG", caption="Facies en el Diagrama de Piper", use_container_width=True)
     st.markdown("""
         Recientemente, algunos autores han propuesto la inclusión de técnicas estadísticas para su construcción y mejora, buscando visualizar información adicional como las relaciones $Ca^{2+}$/$Mg^{2+}$ vs $Cl^{-}$/$SO_4^{2}$, útil para identificar condiciones de intercambio catiónico.
     """)
