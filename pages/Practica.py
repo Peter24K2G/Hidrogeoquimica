@@ -34,6 +34,8 @@ if data_option == "Ejemplo predeterminado":
         st.error(f"Error al cargar los datos de ejemplo: {e}")
         df = None
 else:
+    st.write("*Descarga el archivo plantilla*")
+    st.download_button( label="Descargar CSV", data=edf, file_name="Insumos/PlantillaFQO.csv", mime="text/csv")
     # Permitir al usuario subir su propio archivo CSV
     uploaded_file = st.sidebar.file_uploader("Sube tu archivo CSV", type=["csv"])
     
