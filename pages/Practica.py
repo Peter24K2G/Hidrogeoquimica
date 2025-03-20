@@ -188,7 +188,6 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             summary = pd.DataFrame(zip(a, b, c), index=names, columns=columns)
             return summary
         summary = pca_summary(pca, standardisedX)
-        st.write(summary)
         st.markdown("""
         ### Varianza acumulada
         Se puede tambien verificar el porcentaje acumulado de la varianza explicada por los componentes. Es importante observar que con sólo 2 componentes se alcanza un 64% y con el tercer componente hasta el 80%.
@@ -217,11 +216,6 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
         # Mostrar en Streamlit
         st.pyplot(screeplot(pca, standardisedX))
     
-        st.markdown("""
-        ### Citerio de Kaisser
-        Se pueden retener los componentes cuya varianza este por encima de 1. Para el ejemplo se conservarían los tres primeros componentes.
-        """)
-        st.write(summary.sdev**2)
     
         #Asignar índices a la base de datos.
         label = iris1.columns
@@ -234,7 +228,13 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
         st.write("# Peso de los componentes principales")
         st.write("Pesos:", results['loadings'])
         st.pyplot(fig)
+        st.write(summary)
     
+        st.markdown("""
+        ### Citerio de Kaisser
+        Se pueden retener los componentes cuya varianza este por encima de 1. Para el ejemplo se conservarían los tres primeros componentes.
+        """)
+        st.write(summary.sdev**2)
         st.divider()
     
         st.write("# HHCA (Hierarchical Cluster Analysis)")
