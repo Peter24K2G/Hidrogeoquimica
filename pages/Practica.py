@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
+import numpy as np
 
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import scale
