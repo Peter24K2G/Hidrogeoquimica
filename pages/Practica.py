@@ -11,6 +11,10 @@ import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import scale
+from pca import pca as pcaf
+
 from wqchartpy import gibbs, triangle_piper, contour_piper, durvo, gaillardet, schoeller, hfed
 
 # Mostrar el logo en la barra lateral
