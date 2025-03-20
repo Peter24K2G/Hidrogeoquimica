@@ -229,6 +229,7 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
         fig, ax = model.biplot(n_feat=9, PC=[0,1])
     
         st.write("# Peso de los componentes principales")
+        st.write("Pesos:", results['loadings'])
         st.pyplot(fig)
     
         st.divider()
