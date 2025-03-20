@@ -17,7 +17,7 @@ from sklearn.preprocessing import scale
 from pca import pca as pcaf
 from scipy.cluster.hierarchy import dendrogram, linkage
 
-from wqchartpy import gibbs, triangle_piper, contour_piper, durvo, gaillardet, schoeller, hfed
+from wqchartpy import gibbs, triangle_piper, contour_piper, durvo, gaillardet, schoeller, hfed, stiff
 
 # Mostrar el logo en la barra lateral
 logo = Image.open("images/SIAMSicon.png")  # Ajusta la ruta del logo si es necesario
