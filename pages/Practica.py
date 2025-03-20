@@ -137,6 +137,34 @@ if df is not None:  # Solo ejecutar si hay datos cargados correctamente
             st.image("images/Schoeller_diagram.jpg", caption="Diagrama de Schoeller", use_container_width=True)
 
     elif st.session_state.page == 7:
+            st.markdown("""
+        # ANÁLISIS ESTADÍSTICO MULTIVARIADO
+        Se presentan algunas rutinas básicas para el Análisis de Componentes Principales y de Agrupamiento (Cluster) utilizando resultados de análisis fisicoquímicos de agua subterránea (CAMPUS UNAL 2023). Las concentraciones se reportan en meq/L.
+        Para la preparación de la base de datos, se generan algunos estadísticos y gráficos descriptivos, evaluación de la normalidad de los parámetros y estandarización de los datos.
+        """)
+        medf = pd.read_csv('Insumos/PlantillaFQO.csv')
+    
+        medf1 = medf[['Sample','pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
+    
+        medf2 = medf1.dropna()
+    
+        st.markdown("""
+        ##  Matriz de correlación de los parámetros
+        Se desea realizar una correlación entre los paramétros medidos, para ello se obtiene una matriz de correlación entre los componentes de las muestras, con 1 en la diagonal principal que correlaciona la misma variable. 
+        """)
+    
+        iris = medf2[['pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
+        # iris = iris.drop('CO3',axis=1)
+        matriz_pearson = iris.corr(method='pearson')
+    
+        #Figura de matriz de correlación
+        fig = plt.figure(figsize=(10, 8))
+        sns.heatmap(matriz_pearson, annot=True, fmt=".1f",cmap='coolwarm', linewidths=.5)
+        plt.title('Matriz de Correlación de Pearson')
+        st.pyplot(fig)
+
+        st.divider()
+
         st.markdown("# Analisis de componentes principales")    
         medf1 = df[['Sample','pH', 'HCO3', 'CO3', 'Ca', 'Mg', 'K', 'Na', 'Cl', 'SO4', 'TDS']]
         medf2 = medf1.dropna()
