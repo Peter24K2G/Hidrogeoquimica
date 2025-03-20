@@ -14,7 +14,7 @@ import plotly.graph_objects as go
 from wqchartpy import gibbs, triangle_piper, contour_piper, durvo, gaillardet, schoeller, hfed
 
 # Mostrar el logo en la barra lateral
-logo = Image.open("images/MEGIAicon.png")  # Ajusta la ruta del logo si es necesario
+logo = Image.open("images/SIAMSicon.png")  # Ajusta la ruta del logo si es necesario
 st.sidebar.image(logo, use_container_width=True)
 
 # Barra lateral con selección de datos
