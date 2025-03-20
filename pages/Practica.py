@@ -67,7 +67,10 @@ st.markdown(f"**Página {st.session_state.page} de {total_pages}**")
 # Lógica de cada página
 if df is not None:  # Solo ejecutar si hay datos cargados correctamente
     if st.session_state.page == 1:
-        st.write("Introducción a los diagramas hidrogeoquímicos.")
+        st.markdown("""## Introducción a los diagramas hidrogeoquímicos.
+        Datos cargados:
+        """)
+        st.wrte(df)
 
     elif st.session_state.page == 2:
         st.markdown("## Diagrama de Gibbs")
